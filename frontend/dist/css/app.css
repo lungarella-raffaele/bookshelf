@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@theme {
+    --color-bg: oklch(0.9682 0.0092 106.57);
+    --color-fg: oklch(41.21% 0.0307 95.08);
+    --color-fg-muted: oklch(0.7763 0.0092 106.57);
+    --color-accent: oklch(0.6727 0.219772 38.0931);
+    --color-accent-darker: oklch(0.5529 0.1653 38.0931);
+    --color-bg-alt: oklch(99.27% 0.0066 106.52);
+    --color-destructive: oklch(0.6329 0.2182 21.71);
+
+    --breakpoint-2xl: 100rem;
+    --breakpoint-3xl: 120rem;
+}
+
+a:hover {
+    color: var(--color-accent);
+}
+
+input {
+    @apply p-2 rounded-lg border-fg-muted bg-bg-alt border w-full;
+}
+
+select {
+    appearance: none;
+}
+
+.btn-primary {
+    @apply bg-accent hover:bg-accent-darker text-bg;
+}
+
+.dialog-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-content {
+    padding: 2rem;
+    max-width: 500px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+h1 {
+    @apply text-4xl font-bold;
+}
+
+h2 {
+    @apply text-2xl font-bold;
+}
+
+h3 {
+    @apply text-xl font-bold;
+}
+
+button:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/css/tailwind.css" />
+    </head>
+    <body class="bg-bg">
+        <div id="elm"></div>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="/elm.js"></script>
+        <script>
+            const app = Elm.Main.init({
+                node: document.getElementById("elm"),
+            });
+            lucide.createIcons();
+        </script>
+    </body>
+</html>
