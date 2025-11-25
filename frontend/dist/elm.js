@@ -6269,9 +6269,15 @@ var $author$project$Main$dialogWidthToClass = function (width) {
 			return 'min-w-5xl';
 	}
 };
+var $elm$virtual_dom$VirtualDom$node = function (tag) {
+	return _VirtualDom_node(
+		_VirtualDom_noScript(tag));
+};
+var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
 var $author$project$Main$viewDialog = function (dialog) {
-	return A2(
-		$elm$html$Html$div,
+	return A3(
+		$elm$html$Html$node,
+		'focus-trap-dialog',
 		_List_fromArray(
 			[
 				$elm$html$Html$Attributes$class('dialog-backdrop'),
@@ -6283,6 +6289,7 @@ var $author$project$Main$viewDialog = function (dialog) {
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
+						$elm$html$Html$Attributes$id('dialog'),
 						$elm$html$Html$Attributes$class(
 						'dialog-content bg-bg-alt border border-fg-muted rounded-lg shadow ' + $author$project$Main$dialogWidthToClass(dialog.width)),
 						A2(
@@ -6330,7 +6337,7 @@ var $author$project$Main$viewDialog = function (dialog) {
 											[
 												$elm$html$Html$text('q')
 											])),
-										$elm$html$Html$text('lose')
+										$elm$html$Html$text('uit')
 									]))
 							])),
 						A2($elm$html$Html$div, _List_Nil, dialog.content)
@@ -6361,6 +6368,7 @@ var $author$project$Main$viewCategoryButton = F2(
 			$elm$html$Html$button,
 			_List_fromArray(
 				[
+					A2($elm$html$Html$Attributes$attribute, 'type', 'button'),
 					$elm$html$Html$Events$onClick(
 					$author$project$Main$ToggleCategory(cat)),
 					$elm$html$Html$Attributes$classList(

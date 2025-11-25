@@ -3,7 +3,7 @@ module Main exposing (Model, Msg(..), init, main, update, view)
 import Browser exposing (Document)
 import Browser.Dom
 import Browser.Events
-import Html exposing (Html, a, br, button, div, form, h1, h3, i, input, label, li, option, p, select, span, text, ul)
+import Html exposing (Html, a, br, button, div, form, h1, h3, i, input, label, li, node, p, span, text, ul)
 import Html.Attributes exposing (attribute, class, classList, href, id, placeholder, required, style, target, value)
 import Html.Events exposing (onClick, onInput, stopPropagationOn)
 import Json.Decode
@@ -523,16 +523,18 @@ type DialogWidth
 
 viewDialog : DialogModel -> Html Msg
 viewDialog dialog =
-    div [ class "dialog-backdrop", onClick CloseDialog ]
+    node "focus-trap-dialog"
+        [ class "dialog-backdrop", onClick CloseDialog ]
         [ div
-            [ class ("dialog-content bg-bg-alt border border-fg-muted rounded-lg shadow " ++ dialogWidthToClass dialog.width)
+            [ id "dialog"
+            , class ("dialog-content bg-bg-alt border border-fg-muted rounded-lg shadow " ++ dialogWidthToClass dialog.width)
             , stopPropagationOn "click"
                 (Json.Decode.succeed ( Noop, True ))
             ]
             [ div [ class "flex justify-between items-start" ]
                 [ h3 [ class "mb-4" ] [ text dialog.title ]
                 , button [ onClick CloseDialog, class "text-fg-muted hover:text-accent p-2" ]
-                    [ span [ class "underline" ] [ text "q" ], text "lose" ]
+                    [ span [ class "underline" ] [ text "q" ], text "uit" ]
                 ]
             , div [] dialog.content
             ]
@@ -592,7 +594,8 @@ viewCategoryButton cat input =
             List.member cat input.categories
     in
     button
-        [ onClick (ToggleCategory cat)
+        [ attribute "type" "button"
+        , onClick (ToggleCategory cat)
         , classList
             [ ( "p-1", True )
             , ( "text-accent underline", isSelected )
